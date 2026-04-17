@@ -1,0 +1,33 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">Crear Reseña</h2>
+
+    <form method="POST" class="p-4 rounded" style="background-color:#1a2a4a;">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Autor</label>
+            {{ form.autor }}
+        </div>
+
+        <div class="mb-3">
+            <label>Comentario</label>
+            {{ form.comentario }}
+        </div>
+
+        <div class="mb-3">
+            <label>Calificación</label>
+            {{ form.calificacion }}
+        </div>
+        
+        <button type="submit" class="btn btn-custom w-100">
+            Guardar Reseña
+        </button>
+
+    </form>
+
+</div>
+{% endblock %}

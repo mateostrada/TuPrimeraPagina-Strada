@@ -1,1 +1,2 @@
 # TuPrimeraPagina-Strada
+Esta es la pagina que cree, la cual simula una tienda online de maquillaje.Esta incluye tres modelos los cuales son Historia(cuenta la historia del creador y el porqué creo la pagina), productos(muestra los productos disponibles) y reseñas(mestra la opinion de los clientes). Para poder ver la pagina lo unico que hay que hacer es escribir en el powershell es "python manafe.py runserver".

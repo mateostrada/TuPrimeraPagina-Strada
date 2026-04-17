@@ -1,0 +1,35 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+    <!-- TÍTULO + VOLVER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Crear Historia</h2>
+        <a href="{% url 'petra_historia' %}" class="btn btn-custom">Volver</a>
+    </div>
+
+    <div class="card p-4 shadow" 
+         style="background-color:#34495e; border:none; border-radius:10px;">
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="mb-3">
+                <label>¿Cómo nos conociste?</label>
+                {{ form.conocer }}
+            </div>
+
+            <button type="submit" class="btn btn-custom w-100">
+                Guardar
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

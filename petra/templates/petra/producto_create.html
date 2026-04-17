@@ -1,0 +1,48 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+    <!-- TÍTULO + BOTÓN -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Crear Producto</h2>
+        <a href="{% url 'producto_list' %}" class="btn btn-custom">Volver</a>
+    </div>
+
+    <div class="card p-4 shadow" 
+         style="background-color:#34495e; border:none; border-radius:10px;">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- PRODUCTO -->
+            <div class="mb-3">
+                <label class="form-label">Nombre del producto</label>
+                {{ form.producto }}
+            </div>
+
+            <!-- CANTIDAD -->
+            <div class="mb-3">
+                <label class="form-label">Cantidad disponible</label>
+                {{ form.cantidades_disponibles }}
+            </div>
+
+            <!-- PRECIO -->
+            <div class="mb-3">
+                <label class="form-label">Precio</label>
+                {{ form.precio }}
+            </div>
+
+            <!-- BOTÓN -->
+            <button type="submit" class="btn btn-custom w-100">
+                Guardar Producto
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

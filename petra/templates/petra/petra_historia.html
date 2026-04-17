@@ -1,0 +1,59 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+    <!-- TÍTULO + BOTONES -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Historia</h2>
+
+        <div class="d-flex gap-2">
+            <a href="{% url 'crear_conocer' %}" class="btn btn-custom">
+                + ¿Dónde nos conociste?
+            </a>
+            <a href="{% url 'home' %}" class="btn btn-custom">Volver</a>
+        </div>
+    </div>
+
+    <!-- HISTORIA  -->
+    {% for historia in petra_historia %}
+        {% if historia.titulo or historia.historia %}
+
+        <div class="card p-4 mb-4 shadow" 
+             style="background-color:#34495e; border:none; border-radius:10px;">
+
+            <h3 class="mb-3" style="color:#d2b48c;">
+                {{ historia.titulo }}
+            </h3>
+
+            <p style="font-size: 1.1rem; line-height: 1.6;">
+                {{ historia.historia }}
+            </p>
+
+        </div>
+
+        {% endif %}
+    {% endfor %}
+
+    <!--  UNA SOLA CAJA ABAJO  -->
+    <div class="card p-4 shadow"
+         style="background-color:#34495e; border:none; border-radius:10px;">
+
+        <h3 style="color:#d2b48c;">
+            ¿Cómo nos conociste?
+        </h3>
+
+        {% for historia in petra_historia %}
+    {% if historia.conocer %}
+        <p>{{ historia.conocer }}</p>
+    {% endif %}
+{% empty %}
+    <p>No hay respuestas todavía</p>
+{% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
