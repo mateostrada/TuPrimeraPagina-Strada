@@ -1,0 +1,124 @@
+{% extends "petra/index.html" %}
+
+{% block titulo %}
+<title>Registro</title>
+{% endblock %}
+
+{% block contenido %}
+
+<style>
+    body {
+        background-color: #0b1f3a;
+        color: #f5f5f5;
+    }
+
+    .register-card {
+        background-color: #34495e;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .register-title {
+        color: #f5f5f5;
+        font-weight: bold;
+    }
+
+    .form-label {
+        color: #f5f5f5;
+        font-weight: 500;
+    }
+
+    .btn-custom {
+        background-color: #3e2c23;
+        color: white;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        background-color: #5a3f32;
+        transform: scale(1.02);
+    }
+
+    input {
+        background-color: #ecf0f1 !important;
+    }
+
+    .errorlist {
+        color: #ffb3b3;
+        list-style: none;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="register-card p-5">
+
+                <h2 class="text-center mb-4 register-title">
+                    Crear Cuenta
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <!-- MOSTRAR ERRORES -->
+                    {{ form.errors }}
+
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Nombre de usuario
+                        </label>
+                        {{ form.username }}
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Email
+                        </label>
+                        {{ form.email }}
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Contraseña
+                        </label>
+                        {{ form.password1 }}
+                    </div>
+
+                    <!-- PASSWORD 2 -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            Confirmar contraseña
+                        </label>
+                        {{ form.password2 }}
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-custom w-100 py-2">
+
+                        Registrarse
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

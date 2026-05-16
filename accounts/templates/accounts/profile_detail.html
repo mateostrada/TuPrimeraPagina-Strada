@@ -1,0 +1,98 @@
+{% extends "petra/index.html" %}
+
+{% block titulo %}
+<title>Mi Perfil</title>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5 d-flex justify-content-center">
+
+    <div class="card shadow p-5"
+         style="background-color:#34495e;
+                border:none;
+                border-radius:15px;
+                width:700px;">
+
+        <h2 class="text-center mb-4 text-light">
+            Mi Perfil
+        </h2>
+
+        <!-- AVATAR -->
+        <div class="text-center mb-4">
+
+            <img 
+                src="{% if user.avatar and user.avatar.url %}{{ user.avatar.url }}{% else %}/media/default/default.png{% endif %}"
+                alt="Avatar"
+                class="rounded-circle shadow"
+                width="170"
+                height="170"
+                style="object-fit: cover;">
+
+        </div>
+
+        <!-- DATOS -->
+        <div class="row text-light">
+
+            <div class="col-md-6 mb-3">
+                <h5>Usuario</h5>
+                <p>{{ user.username }}</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h5>Email</h5>
+                <p>{{ user.email }}</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h5>Nombre</h5>
+                <p>{{ user.first_name }}</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h5>Apellido</h5>
+                <p>{{ user.last_name }}</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h5>País</h5>
+                <p>{{ user.pais }}</p>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h5>DNI</h5>
+                <p>{{ user.dni }}</p>
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <h5>Dirección</h5>
+                <p>{{ user.direccion }}</p>
+            </div>
+
+            <div class="col-md-12 mb-4">
+                <h5>Fecha de nacimiento</h5>
+                <p>{{ user.fecha_de_nacimiento }}</p>
+            </div>
+
+        </div>
+
+        <!-- BOTONES -->
+        <div class="d-flex justify-content-center gap-3">
+
+            <a href="{% url 'profile_change' %}"
+               class="btn btn-custom px-4">
+                Editar Perfil
+            </a>
+
+            <a href="{% url 'home' %}"
+               class="btn btn-outline-light px-4">
+                Volver
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

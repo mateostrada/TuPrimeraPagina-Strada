@@ -1,0 +1,83 @@
+{% extends "petra/index.html" %}
+
+{% block titulo %}
+<title>Cerrar Sesión</title>
+{% endblock %}
+
+{% block contenido %}
+
+<style>
+    body {
+        background-color: #0b1f3a;
+        color: #f5f5f5;
+    }
+
+    .logout-card {
+        background-color: #34495e;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .logout-title {
+        font-weight: bold;
+        color: #f5f5f5;
+    }
+
+    .logout-text {
+        color: #dcdcdc;
+        font-size: 18px;
+    }
+
+    .btn-custom {
+        background-color: #3e2c23;
+        color: white;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        background-color: #5a3f32;
+        transform: scale(1.02);
+    }
+</style>
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="logout-card p-5 text-center">
+
+                <h2 class="logout-title mb-4">
+                    Sesión Cerrada
+                </h2>
+
+                <p class="logout-text mb-4">
+                    Has cerrado sesión correctamente.
+                </p>
+
+                <a href="{% url 'login' %}"
+                   class="btn btn-custom w-100 py-2 mb-3">
+
+                    Volver a iniciar sesión
+
+                </a>
+
+                <a href="{% url 'home' %}"
+                   class="btn btn-outline-light w-100">
+
+                    Ir al inicio
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

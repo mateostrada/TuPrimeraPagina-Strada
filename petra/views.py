@@ -6,11 +6,15 @@ from django.http import Http404
 from petra.forms import ReseñaForm
 from petra.forms import HistoriaForm
 from petra.forms import ProductoForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import  login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
     return render(request,"petra/index.html")
 
-
+@login_required
 def producto_list(request):
     productos_query=Producto.objects.all()
     contexto={
@@ -38,7 +42,7 @@ def petra_reseña(request):
         "petra_reseña":list(reseña_query)
     }
     return render(request, "petra/petra_reseña.html",contexto)
-
+@login_required
 def crear_reseña(request):
     if request.method=="POST":
         form= ReseñaForm(request.POST)
@@ -73,4 +77,38 @@ def crear_producto(request):
 
     return render(request,"petra/producto_create.html",{"form":form})
 
+
+class ProductoListView(LoginRequiredMixin,ListView):
+    model = Producto
+    template_name = "petra/producto_list.html"
+    context_object_name = "productos"
+
+
+class ProductoDetailView(LoginRequiredMixin,DetailView):
+    model = Producto
+    template_name = "petra/producto_detail.html"
+
+
+class ProductoCreateView(LoginRequiredMixin,CreateView):
+    model = Producto
+    fields = ["producto", "cantidades_disponibles", "precio"]
+    template_name = "petra/producto_create.html"
+    success_url = reverse_lazy("producto_list")
+
+#     def form_valid(self, form):
+#         print("FORMULARIO VÁLIDO")
+#         return super().form_valid(form)
+
+
+class ProductoUpdateView(LoginRequiredMixin,UpdateView):
+    model = Producto
+    fields = ["producto", "cantidades_disponibles", "precio"]
+    template_name = "petra/producto_update.html"
+    success_url = reverse_lazy("producto_list")
+
+
+class ProductoDeleteView(LoginRequiredMixin,DeleteView):
+    model = Producto
+    template_name = "petra/producto_delete.html"
+    success_url = reverse_lazy("producto_list")
 # Create your views here.

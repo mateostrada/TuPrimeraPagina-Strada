@@ -1,0 +1,60 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+
+<style>
+    body {
+        background-color: #0b1f3a;
+        color: white;
+    }
+
+    .update-card {
+        background-color: #34495e;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+    }
+
+    .btn-custom {
+        background-color: #5c3b2e;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        background-color: #7a4f3b;
+        color: white;
+    }
+</style>
+
+<div class="container mt-5">
+
+    <div class="update-card">
+
+        <h2 class="mb-4">Editar Producto</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn-custom">
+                Guardar Cambios
+            </button>
+
+            <a href="{% url 'producto_list' %}"
+               class="btn-custom text-decoration-none">
+                Volver
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

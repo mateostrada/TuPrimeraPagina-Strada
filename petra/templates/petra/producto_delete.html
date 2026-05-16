@@ -1,0 +1,78 @@
+{% extends "petra/index.html" %}
+
+{% block contenido %}
+
+<style>
+    body {
+        background-color: #0b1f3a;
+        color: white;
+    }
+
+    .delete-card {
+        background-color: #34495e;
+        border-radius: 15px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+    }
+
+    .btn-delete {
+        background-color: #7a2e2e;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: 0.3s;
+    }
+
+    .btn-delete:hover {
+        background-color: #a83d3d;
+    }
+
+    .btn-custom {
+        background-color: #5c3b2e;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        background-color: #7a4f3b;
+        color: white;
+    }
+</style>
+
+<div class="container mt-5">
+
+    <div class="delete-card">
+
+        <h2 class="mb-4">Eliminar Producto</h2>
+
+        <p>
+            ¿Seguro que querés eliminar
+            <strong>{{ object.producto }}</strong>?
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button type="submit" class="btn-delete">
+                Sí, eliminar
+            </button>
+
+            <a href="{% url 'producto_list' %}"
+               class="btn-custom">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
