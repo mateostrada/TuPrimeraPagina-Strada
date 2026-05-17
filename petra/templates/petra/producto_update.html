@@ -28,6 +28,11 @@
         background-color: #7a4f3b;
         color: white;
     }
+
+    img {
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
 </style>
 
 <div class="container mt-5">
@@ -36,7 +41,15 @@
 
         <h2 class="mb-4">Editar Producto</h2>
 
-        <form method="POST">
+        {% if object.imagen %}
+            <div class="text-center">
+                <img src="{{ object.imagen.url }}"
+                     width="250"
+                     class="img-fluid shadow">
+            </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
 

@@ -11,7 +11,7 @@ class PerfilCreateForm(UserCreationForm):
 class PerfilChangeForm(UserChangeForm):
     class Meta:
         model=Perfil
-        fields=("avatar", "pais","dni","direccion","fecha_de_nacimiento","first_name","last_name","password")
+        fields=("avatar", "pais","dni","direccion","fecha_de_nacimiento","first_name","last_name")
         widgets={
             "avatar":forms.ClearableFileInput(attrs={"class":"form-control"}),
             "pais":forms.TextInput(attrs={"class":"form-control"}),
@@ -21,5 +21,4 @@ class PerfilChangeForm(UserChangeForm):
             "last_name":forms.TextInput(attrs={"class":"form-control"}),
             "first_name":forms.TextInput(attrs={"class":"form-control"}),
             "dni":forms.TextInput(attrs={"class":"form-control"}),
-            "password":forms.PasswordInput(attrs={"class":"form-control"}),
             }

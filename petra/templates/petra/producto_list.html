@@ -92,6 +92,13 @@
         background-color: #a83d3d;
         color: white;
     }
+
+    .img-producto {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 </style>
 
 <div class="container mt-5">
@@ -102,15 +109,9 @@
 
             <h2>Productos</h2>
 
-            <div>
-
-                
-
-                <a href="{% url 'home' %}" class="btn-custom">
-                    Volver
-                </a>
-
-            </div>
+            <a href="{% url 'home' %}" class="btn-custom">
+                Volver
+            </a>
 
         </div>
 
@@ -118,8 +119,10 @@
 
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Producto</th>
-                    <th>Cantidad Disponible</th>
+                    <th>Código</th>
+                    <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Acciones</th>
                 </tr>
@@ -131,7 +134,18 @@
 
                 <tr>
 
+                    <td>
+                        {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}"
+                                 class="img-producto">
+                        {% else %}
+                            Sin imagen
+                        {% endif %}
+                    </td>
+
                     <td>{{ producto.producto }}</td>
+
+                    <td>{{ producto.codigo }}</td>
 
                     <td>{{ producto.cantidades_disponibles }}</td>
 
@@ -161,7 +175,7 @@
                 {% empty %}
 
                 <tr>
-                    <td colspan="4">
+                    <td colspan="6">
                         No hay productos cargados
                     </td>
                 </tr>

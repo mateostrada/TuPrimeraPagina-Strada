@@ -11,6 +11,9 @@ class Producto(models.Model):
     producto=models.CharField(max_length=50)
     cantidades_disponibles=models.IntegerField(null=True)
     precio=models.IntegerField(null=True)
+    imagen = models.ImageField(upload_to="productos/", null=True,blank=True)
+    fecha_creacion = models.DateField(auto_now_add=True)
+    codigo = models.IntegerField(unique=True)
     def __str__(self):
         return f"{self.producto}"
 class Reseña(models.Model):

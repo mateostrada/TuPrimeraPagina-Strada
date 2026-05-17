@@ -26,9 +26,11 @@ class HistoriaForm(forms.ModelForm):
 class ProductoForm(forms.ModelForm):
     class Meta:
         model= Producto
-        fields=("producto","cantidades_disponibles","precio")
+        fields=("producto","cantidades_disponibles","precio","imagen","codigo",)
         widgets={
             "producto": forms.TextInput(attrs={"class":"form-control"}),
             "cantidades_disponibles": forms.NumberInput(attrs={"class":"form-control"}),
             "precio": forms.NumberInput(attrs={"class":"form-control"}),
+            "imagen": forms.ClearableFileInput(attrs={"class":"form-control"}),
+            "codigo": forms.NumberInput(attrs={"class":"form-control"}),
         }

@@ -68,7 +68,7 @@ def crear_conocer(request):
 
 def crear_producto(request):
     if request.method=="POST":
-        form= ProductoForm(request.POST)
+        form= ProductoForm(request.POST, request.FILES)
         if form.is_valid() :
             form.save()
             return redirect("producto_list")
@@ -91,7 +91,7 @@ class ProductoDetailView(LoginRequiredMixin,DetailView):
 
 class ProductoCreateView(LoginRequiredMixin,CreateView):
     model = Producto
-    fields = ["producto", "cantidades_disponibles", "precio"]
+    fields = ["producto", "cantidades_disponibles", "precio", "imagen", "codigo"]
     template_name = "petra/producto_create.html"
     success_url = reverse_lazy("producto_list")
 
@@ -102,7 +102,7 @@ class ProductoCreateView(LoginRequiredMixin,CreateView):
 
 class ProductoUpdateView(LoginRequiredMixin,UpdateView):
     model = Producto
-    fields = ["producto", "cantidades_disponibles", "precio"]
+    fields = ["producto", "cantidades_disponibles", "precio", "imagen", "codigo"]
     template_name = "petra/producto_update.html"
     success_url = reverse_lazy("producto_list")
 

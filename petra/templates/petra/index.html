@@ -82,9 +82,13 @@
                     <a class="nav-link" href="{% url 'profile_detail' %}">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <form action="{% url 'logout' %}" method="POST" style="display: inline;">
-                        {%csrf_token%}
-                        <a href="{%url 'logout' %}" class="nav-link"> Cerrar Sesion</a>
+                    <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit"
+                                style="background:none;border:none;color:white;"
+                                class="nav-link">
+                            Cerrar Sesión
+                        </button>
                     </form>
                 </li>
                 {% else %}

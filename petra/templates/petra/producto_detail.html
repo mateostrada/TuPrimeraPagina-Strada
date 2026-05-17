@@ -29,13 +29,29 @@
         background-color: #7a4f3b;
         color: white;
     }
+
+    .producto-img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+    }
 </style>
 
 <div class="container mt-5">
 
-    <div class="detail-card">
+    <div class="detail-card text-center">
 
         <h1 class="mb-4">{{ object.producto }}</h1>
+
+        {% if object.imagen %}
+            <img src="{{ object.imagen.url }}"
+                 class="producto-img">
+        {% else %}
+            <p>No hay imagen disponible</p>
+        {% endif %}
 
         <h4>Cantidad disponible</h4>
         <p>{{ object.cantidades_disponibles }}</p>
@@ -43,7 +59,13 @@
         <h4>Precio</h4>
         <p>$ {{ object.precio }}</p>
 
-        <div class="mt-4">
+        <h4>Código</h4>
+        <p>{{ object.codigo }}</p>
+
+        <h4>Fecha de creación</h4>
+        <p>{{ object.fecha_creacion }}</p>
+
+        <div class="mt-4 d-flex justify-content-center gap-3">
 
             <a href="{% url 'producto_update' object.id %}"
                class="btn-custom">
