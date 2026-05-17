@@ -1,5 +1,9 @@
 {% extends "petra/index.html" %}
-
+{% if form.errors %}
+    <div class="alert alert-danger">
+        Usuario o contraseña incorrectos
+    </div>
+{% endif %}
 {% block titulo %}
 <title>Iniciar Sesion</title>
 {% endblock %}
